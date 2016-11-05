@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <img src="static/bookStoreFlip/icon.png" height="50" width="50">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/bookStoreFlip.html">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right"> 
+         <li><a href="/addBook.html"><span class="glyphicon glyphicon-plus"></span> List a Book </a></li>
+          <li><a href="/booksListed.html"><span class="glyphicon glyphicon-list"></span> Your Listed Books</a></li>
+
+        <li><a href="/profile.html"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
+        <li><a href="/login.html"><span class="glyphicon glyphicon-log-out"></span> </a></li>
+    </div>
+  </div>
+</nav>
+
+
+
+<form class="form-inline" method="post">
+  <div class="form-group col-sm-offset-10">
+   
+    <select class="selectpicker" id="department" name=department >
+    <option>"None"</option>
+    <option>"ENME"</option>
+    <option>"ENCE"</option>
+    <option>"ENEE"</option>
+    <option>"NAME"</option>
+    </select>
+    
+   <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>
+
+
+
+<div class="element" style="margin-bottom: 11%;">
+    <div class="container" > 
+      <div class="row">  
+     {% for book in booksFound %} 
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading"><a href="/showBook.html">Book Name: {{book.Name}}</a></div>
+            <div class="panel-body "><a href="/showBook/{{book.Id}}"><img src={{book.photoid}} class="img-responsive" style="width:100%" alt="Image"></a></div>
+            <div class="panel-body ">Jargon</div>
+            <div class="panel-footer">This book is for {{book.department}} for course {{book.course}} </div>
+          </div>  
+        </div>
+        {%endfor%}
+        </div>
+</div>
+    
+
+
+
+
+{% endblock %}

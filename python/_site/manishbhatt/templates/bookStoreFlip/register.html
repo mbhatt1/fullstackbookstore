@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  {{super()}}
+  
+  <img src="static/bookStoreFlip/icon.png" class="img-responsive center-block" style="width:5%">
+  <h2><span class="label label-primary center-block" > The online BookStore </span></h2>
+
+
+  <h1 align="center" id="label">Register New User</h1>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+  <form action="" method=post align="center">
+    <dl>
+      <dt>Email:
+      <dd><input type=email name=username id="username" required>
+      <br></br>
+      <dt>First Name*:
+      <dd><input type=text name=firstname id="firstname" required>
+      <br></br>
+      <dt>Last Name*:
+      <dd><input type=text name=lastname id="lastname" required>
+      <br></br>
+      <dt>Department*:
+      <select class="selectpicker" id="department" name=department required>
+	    <option>"ENME"</option>
+	    <option>"ENCE"</option>
+	    <option>"ENEE"</option>
+	    <option>"NAME"</option>
+	  </select>
+	  <br></br>
+	  <dt>Password*:
+      <dd><input type=password id="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1" onchange="form.pwd2.pattern = this.value;" required>
+      <br></br>
+      <dt>ReType Password*:
+      <dd><input type=password id="password1" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2" required>
+
+    </dl>
+    <p><input type=submit value=Register>
+  </form>
+
+	<div align="center">
+	<span  class="label label-danger" align="center">All * Fields are Required </span></div>
+	<div align="center">
+	<span  class="label label-danger" align="center">Password must contain at least 6 characters, including UPPER/lowercase and numbers. </span>	
+	</div>
+{% endblock %}
+
